@@ -271,5 +271,3 @@ def randomLife(INDUSTRALIZE,colonize):
         elif(lifeRate > life * 0.5 and lifeRate <= life):
             return 20
 
-j = randomProvince(3,"1680 - Fez.txt")
-j.create_province(2)
