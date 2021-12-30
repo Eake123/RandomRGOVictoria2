@@ -31,11 +31,12 @@ class randomProvince:
                 filetotal += line
         
         df.close()
-        if(tech > 3.5):
-            filetotal += buildState()
-        dw = open(self.file, "w")
-        dw.write(filetotal)
-        dw.close
+        if tech is not None:
+            if(tech > 3.5):
+                filetotal += buildState()
+            dw = open(self.file, "w")
+            dw.write(filetotal)
+            dw.close
         try:
             if(colonial == False):
                 return tag.strip()
@@ -270,4 +271,5 @@ def randomLife(INDUSTRALIZE,colonize):
             return 15
         elif(lifeRate > life * 0.5 and lifeRate <= life):
             return 20
+
 
