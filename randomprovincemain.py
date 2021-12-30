@@ -1,7 +1,7 @@
 import glob, os
 from randomclass import *
 ########################### enter you directory here ##############################
-directory = "D:\Steam\steamapps\common\Victoria 2\mod\GFM\history\provinces"
+directory = "D:\Program Files (x86)\steamapps\common\Victoria 2\mod\GFM\history\provinces"
 directoryLit = directory.replace("provinces", "countries")
 directoryPop = directory.replace("provinces", "pops")
 directoryPop = directoryPop + "\\1836.1.1"
@@ -37,7 +37,7 @@ def completeRandom(techInput):
         for file in glob.glob("*.txt"):
             print(file)
             changeProvince = randomProvince(industralize, file)
-            tag = changeProvince.create_province()
+            tag = changeProvince.create_province(tech)
             print(tag)
             if(tag == "QNG" and "china" not in filename):
                 regionDic = regionDic
@@ -73,15 +73,14 @@ def manualRandom(techInput):
             if(techInput == "1"):
                 tech = float(input("enter the tech level for %s: " %(filename)))
             else:
-                tech = 0
+                tech = False
             singleRegion = directory + '\\' + filename
             os.chdir(singleRegion)
             for file in glob.glob("*.txt"):
                 print(file)
                 provDic[fileSplit(file)] = tech
                 changeProvince = randomProvince(industralize, file)
-                tag = changeProvince.create_province()
-                print(tag)
+                tag = changeProvince.create_province(tech)
                 if(tag == "QNG" and "china" not in filename):
                     regionDic = regionDic
                 elif(tag == "FRA" and "france" not in filename):
@@ -126,7 +125,7 @@ def regionRandom(techInput):
         for file in glob.glob("*.txt"):
             print(file)
             changeProvince = randomProvince(industralize, file)
-            tag = changeProvince.create_province()
+            tag = changeProvince.create_province(tech)
             print(tag)
             if(tag == "QNG" and "china" not in filename):
                 regionDic = regionDic
